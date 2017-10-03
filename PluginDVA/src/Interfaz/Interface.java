@@ -24,8 +24,10 @@ import javafx.stage.Stage;
 
 public class Interface implements Initializable {
 
+	Image imgIconDVA = new Image(getClass().getResourceAsStream("/Image/IconDVA.png"));
+	
 	@FXML
-	public void Close(ActionEvent event){		
+	public void close(ActionEvent event){		
 		try{
 			Platform.exit();
 			System.exit(0);
@@ -34,6 +36,22 @@ public class Interface implements Initializable {
 		}
 			
 	}
+	
+	@FXML
+	public void openInformation(ActionEvent event){			
+		try{
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Information.fxml"));
+			Parent root1 = (Parent) fxmlLoader.load();
+			Stage stage = new Stage();
+			stage.centerOnScreen();
+			stage.getIcons().add(new Image("/Image/IconDVA.PNG"));
+			stage.setTitle("PluginDVA");
+			stage.setScene(new Scene(root1));
+			stage.show();			
+		}catch (Exception e){
+			System.out.println("Error_Window Infotmation");
+		}			
+		}
 	
 	@Override
 	public void initialize(URL url, ResourceBundle rb){
